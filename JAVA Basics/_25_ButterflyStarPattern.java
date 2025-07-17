@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class _20_HollowRectanglePattern {
+public class _25_ButterflyStarPattern {
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
 
@@ -9,15 +9,14 @@ public class _20_HollowRectanglePattern {
 
         System.out.println();
         for (int i = 1; i <= numberOfLines; i++) {
-            for (int j = 1; j <= numberOfLines; j++) {
-                if (i == 1 || i == numberOfLines || (j == 1 || j == numberOfLines)) {
-                    System.out.print(" * ");
+            for (int j = 1; j <= numberOfLines * 2 - 1; j++) {
+                if (j <= i || j >= (numberOfLines * 2 - 1) - i + 1) {
+                    System.out.print("*");
                 } else {
-                    System.out.print("   ");
+                    System.out.print(" ");
                 }
             }
             System.out.println();
         }
-        System.out.println("\n");
     }
 }

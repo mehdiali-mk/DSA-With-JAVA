@@ -16,5 +16,6 @@ public class _19_StarPattern4 {
             }
             System.out.println();
         }
+        System.out.println("\n");
     }
 }
