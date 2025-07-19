@@ -19,5 +19,6 @@ public class _24_0And1Triangle {
             }
             System.out.println();
         }
+        System.out.println();
     }
 }
