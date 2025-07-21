@@ -25,5 +25,6 @@ public class _34_isPrimeInRange {
 
         System.out.println("\nPrime numbers in range (2, " + number + "): ");
         primeInRange(number);
+        System.out.println("\n\n");
     }
 }
