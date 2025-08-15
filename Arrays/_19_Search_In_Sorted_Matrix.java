@@ -4,7 +4,6 @@ public class _19_Search_In_Sorted_Matrix {
     public static void staircaseSearch(int matrix[][], int key) {
         int row = 0;
         int column = matrix[0].length - 1;
-
         while (row < matrix.length && column >= 0) {
             if (matrix[row][column] == key) {
                 System.out.print("\n\n" + key + " found at location (" + row + ", " + column + ").\n\n");
@@ -15,7 +14,6 @@ public class _19_Search_In_Sorted_Matrix {
                 row++;
             }
         }
-
         System.out.println("\n\n" + key + " does not exists.");
     }
 
