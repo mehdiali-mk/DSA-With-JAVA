@@ -7,9 +7,9 @@ public class _16_Number_To_Text {
         if (number == 0) {
             return sb.toString();
         }
-
+        numberToText(number / 10, sb);
         sb.append(digitsText[number % 10] + " ");
-        return numberToText(number / 10, sb);
+        return sb.toString();
     }
 
     public static void main(String args[]) {
