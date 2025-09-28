@@ -1,3 +1,7 @@
+// Question 1 : Apply Merge sort to sort an array of Strings. (Assume that all the characters in all the Strings are in lowercase). (EASY)
+// Sample Input 1 : arr = { "sun", "earth", "mars", "mercury" }
+// Sample Output 1 : arr = { "earth", "mars", "mercury", "sun"}
+
 package Sorting;
 
 public class sortArrayOfString {
