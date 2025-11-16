@@ -1,6 +1,6 @@
 import org.w3c.dom.Node;
 
-public class _15_Double_Linked_List_Add_First {
+public class _16_Double_Linked_List_Remove_First {
     public class Node {
         int data;
         Node nextNode;
@@ -31,6 +31,24 @@ public class _15_Double_Linked_List_Add_First {
         headNode = newNode;
     }
 
+    public int removeFirst() {
+        if (headNode == null) {
+            System.out.println("Double Linked List is empty.");
+        }
+        if (size == 1) {
+            int value = headNode.data;
+            headNode = tailNode = null;
+            size--;
+            return value;
+        }
+
+        int value = headNode.data;
+        headNode = headNode.nextNode;
+        headNode.previousNode = null;
+        size--;
+        return value;
+    }
+
     public void displayDoubleLinkedList() {
         Node tempNode = headNode;
 
@@ -45,13 +63,18 @@ public class _15_Double_Linked_List_Add_First {
     }
 
     public static void main(String args[]) {
-        _15_Double_Linked_List_Add_First doubleLinkedList = new _15_Double_Linked_List_Add_First();
+        _16_Double_Linked_List_Remove_First doubleLinkedList = new _16_Double_Linked_List_Remove_First();
 
         doubleLinkedList.addFirst(5);
         doubleLinkedList.addFirst(4);
         doubleLinkedList.addFirst(3);
         doubleLinkedList.addFirst(2);
         doubleLinkedList.addFirst(1);
+        System.out.println("\n\nDouble Linked List (" + doubleLinkedList.size + "):");
+        doubleLinkedList.displayDoubleLinkedList();
+
+        doubleLinkedList.removeFirst();
+        doubleLinkedList.removeFirst();
         System.out.println("\n\nDouble Linked List (" + doubleLinkedList.size + "):");
         doubleLinkedList.displayDoubleLinkedList();
         System.out.println("\n\n");
