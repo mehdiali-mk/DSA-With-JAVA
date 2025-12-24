@@ -1,3 +1,16 @@
+/*
+
+Question 1 :
+Generate Binary Numbers
+Given a number N. The task is to generate and print all binary numbers with decimal values from
+1 to N.
+Sample Input 1 : N =2
+Sample Output 1 : 1 10
+Sample Input 2 : 5.
+Sample Output 2 : 1 10 11 100 101
+
+*/
+
 import java.util.LinkedList;
 import java.util.Queue;
 
