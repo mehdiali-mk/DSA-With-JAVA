@@ -19,10 +19,8 @@ public class _09_BankAccount {
         System.setOut(new PrintStream(System.out, true, StandardCharsets.UTF_8));
         Scanner sc = new Scanner(System.in);
 
-        // 1. Load Data
         List<BankAccount> allUsers = DatabaseHandler.loadUsers();
 
-        // (Optional: Create default users if the file is empty for testing)
         if (allUsers.isEmpty()) {
             allUsers.add(new BankAccount("mehdiali_mk", "Mehdiali@123", 100000));
             allUsers.add(new BankAccount("ahesanali", "Ahesanali@123", 10000));
@@ -44,6 +42,7 @@ public class _09_BankAccount {
 
         int round = 2;
 
+        clearConsole();
         while (round != -1) {
             System.out.println("\n\n--- Welcome to the Bank ---");
             System.out.println("\n1. Login");
@@ -53,6 +52,8 @@ public class _09_BankAccount {
             System.out.print("\n\nEnter your choice: ");
             int userChoice = sc.nextInt();
             sc.nextLine();
+
+            clearConsole();
 
             switch (userChoice) {
                 case 1:
@@ -74,9 +75,10 @@ public class _09_BankAccount {
                         System.out.println("Invalid credentials. Try Again...");
                         return;
                     }
-
+                    clearConsole();
                     if (activeUser.getActive()) {
                         while (round != 0) {
+
                             System.out.flush();
                             System.out.println("\n\nWelcome " + activeUser.username + ", to the bank.");
                             System.out.println("\n1. Change Username");
@@ -92,6 +94,7 @@ public class _09_BankAccount {
                             userChoice = sc.nextInt();
                             sc.nextLine();
 
+                            clearConsole();
                             switch (userChoice) {
                                 case 1:
                                     activeUser.changeUsername(sc);
@@ -124,6 +127,7 @@ public class _09_BankAccount {
                         }
                     } else {
                         while (round != 0) {
+                            clearConsole();
                             System.out.flush();
                             System.out.println("\n\nWelcome " + activeUser.username + ", to the bank.");
                             System.out.println("Unfortunately your account is Seized.");
@@ -135,6 +139,7 @@ public class _09_BankAccount {
                             userChoice = sc.nextInt();
                             sc.nextLine();
 
+                            clearConsole();
                             switch (userChoice) {
                                 case 1:
                                     activeUser.releaseAccount(sc);
@@ -151,6 +156,7 @@ public class _09_BankAccount {
                     break;
 
                 case 2:
+                    clearConsole();
                     System.out.println("\n\n--- Signup to the Bank ---");
                     System.out.print("Username: ");
                     String signupUsername = sc.next();
@@ -174,12 +180,41 @@ public class _09_BankAccount {
             }
         }
 
-        // 4. Save Data on Exit
         DatabaseHandler.saveUsers(allUsers);
         System.out.println("Data saved successfully. Goodbye!");
 
         System.out.println("\n\n\nThanks for using program.");
         System.out.println("\n\t-- Created by Mehdiali Kadiwala --");
+    }
+
+    public static void clearConsole() {
+        try {
+            // Method 1: ANSI Escape Codes (Best for modern terminals)
+            System.out.print("\033[H\033[2J");
+            System.out.print("\033[3J"); // Clear scrollback buffer (extra clean)
+            System.out.flush();
+
+            // Method 2: Alternative full reset
+            if (System.console() != null) {
+                System.out.print("\033c");
+                System.out.flush();
+            }
+
+            // Method 3: Platform-specific command (very reliable)
+            String os = System.getProperty("os.name").toLowerCase();
+
+            if (os.contains("win")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                new ProcessBuilder("clear").inheritIO().start().waitFor();
+            }
+
+        } catch (Exception e) {
+            // Ultimate fallback - print many new lines
+            for (int i = 0; i < 100; i++) {
+                System.out.println();
+            }
+        }
     }
 }
 
@@ -516,10 +551,9 @@ class BankAccount {
 
 class DatabaseHandler {
     private static final String FILE_NAME = "users.json";
-    // GsonBuilder with pretty printing makes the JSON file readable
+
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-    // 1. Load users from JSON
     public static List<BankAccount> loadUsers() {
         try (Reader reader = new FileReader(FILE_NAME)) {
             Type listType = new TypeToken<ArrayList<BankAccount>>() {
@@ -527,7 +561,7 @@ class DatabaseHandler {
             List<BankAccount> users = gson.fromJson(reader, listType);
             return users != null ? users : new ArrayList<>();
         } catch (FileNotFoundException e) {
-            // File doesn't exist yet, return empty list
+
             return new ArrayList<>();
         } catch (IOException e) {
             e.printStackTrace();
@@ -535,7 +569,6 @@ class DatabaseHandler {
         }
     }
 
-    // 2. Save users to JSON
     public static void saveUsers(List<BankAccount> users) {
         try (Writer writer = new FileWriter(FILE_NAME)) {
             gson.toJson(users, writer);
