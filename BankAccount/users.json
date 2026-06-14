@@ -1,0 +1,38 @@
+[
+  {
+    "username": "mehdiali_mk",
+    "accountNumber": 306502137642,
+    "active": true,
+    "releaseDaysLeft": 0,
+    "releaseAppealed": false,
+    "password": "Mehdiali@123",
+    "balance": 100000.0,
+    "transactions": [
+      "Opening balance: 100000.0"
+    ]
+  },
+  {
+    "username": "ahesanali",
+    "accountNumber": 931940547777,
+    "active": true,
+    "releaseDaysLeft": 0,
+    "releaseAppealed": false,
+    "password": "Ahesanali@123",
+    "balance": 10000.0,
+    "transactions": [
+      "Opening balance: 10000.0"
+    ]
+  },
+  {
+    "username": "nafeesa",
+    "accountNumber": 622159848486,
+    "active": true,
+    "releaseDaysLeft": 0,
+    "releaseAppealed": false,
+    "password": "Nafeesa@123",
+    "balance": 90000.0,
+    "transactions": [
+      "Opening balance: 90000.0"
+    ]
+  }
+]
