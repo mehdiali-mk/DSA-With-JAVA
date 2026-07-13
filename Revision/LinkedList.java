@@ -271,4 +271,39 @@ public class LinkedList {
         }
         return total;
     }
+
+    public void reverseBetween(int startingPosition, int endingPosition) {
+        if (startingPosition < 0 || startingPosition > length || endingPosition < 0 || endingPosition > length
+                || startingPosition > endingPosition || startingPosition == endingPosition)
+            return;
+
+        Node startNode = headNode;
+        Node beforeStartNode = headNode;
+        for (int i = 1; i < startingPosition; i++) {
+            if (i < startingPosition - 1) {
+                beforeStartNode = beforeStartNode.nextNode;
+            }
+            startNode = startNode.nextNode;
+        }
+        Node endNode = startNode;
+        for (int i = 1; i < endingPosition - 1; i++) {
+            endNode = endNode.nextNode;
+        }
+
+        Node currentNode = startNode.nextNode;
+        Node afterNode = currentNode.nextNode;
+        Node beforeNode = startNode;
+
+        for (int i = startingPosition; i < endingPosition; i++) {
+
+            afterNode = currentNode.nextNode;
+            currentNode.nextNode = beforeNode;
+            beforeNode = currentNode;
+            currentNode = afterNode;
+
+        }
+        beforeStartNode.nextNode = beforeNode;
+        startNode.nextNode = currentNode;
+    }
+
 }

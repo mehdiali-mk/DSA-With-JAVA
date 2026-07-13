@@ -6,12 +6,14 @@ public class _23_LinkedList {
         myLinkedList.printList();
 
         myLinkedList.appendNode(1);
-        myLinkedList.appendNode(1);
-        myLinkedList.appendNode(1);
+        myLinkedList.appendNode(2);
+        myLinkedList.appendNode(3);
+        myLinkedList.appendNode(4);
+        myLinkedList.appendNode(5);
         System.out.println("\n");
         myLinkedList.printList();
 
-        System.out.println("Binary To Decimal = " + myLinkedList.convertBinaryToDecimal());
+        myLinkedList.reverseBetween(2, 4);
         myLinkedList.printList();
         System.out.println("\n");
 
