@@ -19,6 +19,9 @@ public class Queue {
         length = 1;
     }
 
+    Queue() {
+    }
+
     public void enqueue(int value) {
         Node newNode = new Node(value);
         if (length == 0) {

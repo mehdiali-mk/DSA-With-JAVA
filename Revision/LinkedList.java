@@ -52,6 +52,10 @@ public class LinkedList {
         System.out.println("LL Length: " + length);
     }
 
+    public int getLengthValue() {
+        return length;
+    }
+
     public void appendNode(int value) {
         Node newNode = new Node(value);
         if (headNode == null && tailNode == null) {
